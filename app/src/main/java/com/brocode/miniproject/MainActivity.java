@@ -45,15 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addFragment(String title, int size){
-        MainFragment fragment = new MainFragment();
+    private void addFragment(String title, int size, Fragment fragment){
         fragment.initiateFragment(size);
         fragmentList.add(fragment);
         fragmentTitle.add(title);
     }
 
     private void initiateFragments(){
-        addFragment("Budget", 5);
+        addFragment("Budget", 5, new BudgetGraph());
         addFragment("Shitface", 1);
         addFragment("Ass", 50);
 

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainFragment extends Fragment {
+public class BudgetGraph extends Fragment {
 
     List<GraphObject> graphs = new ArrayList<>();
 
@@ -97,8 +97,5 @@ public class MainFragment extends Fragment {
     private void addGraph(GraphObject graphObject){
         graphs.add(graphObject);
     }
-
-
-
 
 }
