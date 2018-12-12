@@ -56,7 +56,7 @@ public class BudgetFragment extends Fragment {
         recyclerViewPpl.setLayoutManager(new LinearLayoutManager(getActivity()));
         RecyclerViewPeople adapterPpl = new RecyclerViewPeople(getActivity(), nameList, hourList);
         recyclerViewPpl.setAdapter(adapterPpl);
-
+        recyclerViewPpl.setNestedScrollingEnabled(false);
 
         //HOW TO; Make a graph and display it
         //---------------
@@ -94,6 +94,7 @@ public class BudgetFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         RecyclerViewGraph adapter = new RecyclerViewGraph(getActivity(), graphs);
         recyclerView.setAdapter(adapter);
+        recyclerView.setNestedScrollingEnabled(false);
 
         return view;
     }
