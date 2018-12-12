@@ -1,34 +1,26 @@
 package com.brocode.miniproject;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
-import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewGraph extends RecyclerView.Adapter<RecyclerViewGraph.ViewHolder> {
 
 
     private LayoutInflater mInflater;
     List<GraphObject> graphObject;
 
     // data is passed into the constructor
-    RecyclerViewAdapter(Context context, List<GraphObject> graphObject) {
+    RecyclerViewGraph(Context context, List<GraphObject> graphObject) {
         this.mInflater = LayoutInflater.from(context);
         this.graphObject = graphObject;
     }
