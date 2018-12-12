@@ -17,8 +17,6 @@ public class BudgetFragment extends Fragment {
 
     List<GraphObject> graphs = new ArrayList<>();
 
-    private int cardSize = 0;
-
     List<String> nameList;
     List<Integer> hourList;
 
@@ -80,7 +78,17 @@ public class BudgetFragment extends Fragment {
 
 
         addGraph(graph2);
+        //----------------
 
+        GraphObject graph3 = new GraphObject();
+        graph3.setTitle("Test Graph 3");
+        graph3.setBudget(5);
+        graph3.setTime(8);
+        graph3.setCoordinates(new int[][]{{5,5},{1,3}});
+
+
+        addGraph(graph3);
+        //----------------
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
