@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BudgetGraph extends Fragment {
+public class BudgetFragment extends Fragment {
 
     List<GraphObject> graphs = new ArrayList<>();
 
@@ -25,9 +25,6 @@ public class BudgetGraph extends Fragment {
     TextView allHours;
 
 
-    public void initiateFragment(int cardSize){
-       this.cardSize = cardSize;
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

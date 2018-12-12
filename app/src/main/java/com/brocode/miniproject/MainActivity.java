@@ -45,16 +45,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addFragment(String title, int size, Fragment fragment){
-        fragment.initiateFragment(size);
+    private void addFragment(String title, Fragment fragment){
         fragmentList.add(fragment);
         fragmentTitle.add(title);
     }
 
     private void initiateFragments(){
-        addFragment("Budget", 5, new BudgetGraph());
-        addFragment("Shitface", 1);
-        addFragment("Ass", 50);
+        addFragment("Budget", new BudgetFragment());
+        addFragment("Risk Matrix", new RiskMatrixFragment());
+        addFragment("Schedule", new ScheduleFragment());
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
