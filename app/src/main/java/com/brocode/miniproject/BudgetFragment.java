@@ -1,5 +1,6 @@
 package com.brocode.miniproject;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,9 +28,9 @@ public class BudgetFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_budget, container, false);
 
-        allHours = (TextView) view.findViewById(R.id.textViewTotalHours);
+        allHours = view.findViewById(R.id.textViewTotalHours);
 
         nameList = new ArrayList<>();
         hourList = new ArrayList<>();
@@ -50,6 +52,10 @@ public class BudgetFragment extends Fragment {
             allHoursTogether += hour;
         }
         allHours.setText(allHoursTogether + "h");
+
+        //SETS budget
+
+        setBudget(view, 1, 1000000, 25000);
 
 
         RecyclerView recyclerViewPpl = view.findViewById(R.id.recyclerViewPeople);
@@ -97,6 +103,39 @@ public class BudgetFragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(false);
 
         return view;
+    }
+
+    private void setBudget(View view, int min, int max, int progress) {
+        final TextView minTextView = view.findViewById(R.id.progressBarStartText);
+        TextView maxTextView = view.findViewById(R.id.progressBarEndText);
+        SeekBar progressBar = view.findViewById(R.id.progressBar);
+
+        minTextView.setText(min + " kr");
+        maxTextView.setText(max + " kr");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            progressBar.setMin(min);
+            progressBar.setMax(max);
+            progressBar.setProgress(progress, true);
+        } else {
+            progressBar.setMax(max - min);
+            progressBar.setProgress(progress - min);
+        }
+        progressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                minTextView.setText(progress + " kr");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
 
