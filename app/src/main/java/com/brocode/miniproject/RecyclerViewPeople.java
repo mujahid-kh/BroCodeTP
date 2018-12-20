@@ -7,21 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
-import java.util.List;
-
 public class RecyclerViewPeople extends RecyclerView.Adapter<RecyclerViewPeople.ViewHolder> {
 
 
     private LayoutInflater mInflater;
-    private List<String> nameList;
-    private List<Integer> hourList;
+    private String[] nameList;
+    private String[] hourList;
 
     // data is passed into the constructor
-    RecyclerViewPeople(Context context, List<String> nameList, List<Integer> hourList) {
+    RecyclerViewPeople(Context context, String[] nameList, String[] hourList) {
         this.mInflater = LayoutInflater.from(context);
         this.nameList = nameList;
         this.hourList = hourList;
@@ -38,15 +32,15 @@ public class RecyclerViewPeople extends RecyclerView.Adapter<RecyclerViewPeople.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         //holder.mSampleTextView.setText(mSampleText.get(position));
-        holder.name.setText(nameList.get(position));
-        holder.hour.setText(hourList.get(position) + "h");
+        holder.name.setText(nameList[position]);
+        holder.hour.setText(hourList[position] + "h");
 
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return nameList.size();
+        return nameList.length;
     }
 
 
@@ -57,8 +51,8 @@ public class RecyclerViewPeople extends RecyclerView.Adapter<RecyclerViewPeople.
 
         ViewHolder(View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.textViewName);
-            hour = (TextView) itemView.findViewById(R.id.textViewHour);
+            name = itemView.findViewById(R.id.textViewName);
+            hour = itemView.findViewById(R.id.textViewHour);
         }
 
     }

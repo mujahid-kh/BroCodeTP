@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -35,14 +34,19 @@ public class RecyclerViewGraph extends RecyclerView.Adapter<RecyclerViewGraph.Vi
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        //holder.mSampleTextView.setText(mSampleText.get(position));
-        holder.graph.setTitle("Assfaces per km");
         LineGraphSeries<DataPoint> series = null;
         for(int i = 0; i < graphObject.get(position).getCoordinates().length; i++) {
-            series = new LineGraphSeries<>(new DataPoint[]{
-                    new DataPoint(0, 0),
-                    new DataPoint(graphObject.get(position).getCoordinates()[i][0], graphObject.get(position).getCoordinates()[i][1]),
-            });
+            if (i != 0) {
+                series = new LineGraphSeries<>(new DataPoint[]{
+                        new DataPoint(graphObject.get(position).getCoordinates()[i - 1][0], graphObject.get(position).getCoordinates()[i - 1][1]),
+                        new DataPoint(graphObject.get(position).getCoordinates()[i][0], graphObject.get(position).getCoordinates()[i][1])
+                });
+            } else {
+                series = new LineGraphSeries<>(new DataPoint[]{
+                        new DataPoint(0, 0),
+                        new DataPoint(graphObject.get(position).getCoordinates()[i][0], graphObject.get(position).getCoordinates()[i][1]),
+                });
+            }
             holder.graph.addSeries(series);
         }
         holder.graph.getViewport().setXAxisBoundsManual(true);
@@ -70,7 +74,7 @@ public class RecyclerViewGraph extends RecyclerView.Adapter<RecyclerViewGraph.Vi
         ViewHolder(View itemView) {
             super(itemView);
             //mSampleTextView = itemView.findViewById(R.id.textView);
-            graph = (GraphView) itemView.findViewById(R.id.graph);
+            graph = itemView.findViewById(R.id.graph);
         }
 
     }

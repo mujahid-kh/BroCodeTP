@@ -19,9 +19,6 @@ public class BudgetFragment extends Fragment {
 
     List<GraphObject> graphs = new ArrayList<>();
 
-    List<String> nameList;
-    List<Integer> hourList;
-
     TextView allHours;
 
 
@@ -32,50 +29,38 @@ public class BudgetFragment extends Fragment {
 
         allHours = view.findViewById(R.id.textViewTotalHours);
 
-        nameList = new ArrayList<>();
-        hourList = new ArrayList<>();
-
-        //HOW TO; Add people
-        //---------------
-
-        nameList.add("Peepz");
-        nameList.add("Bois");
-        nameList.add("Dudeees");
-
-        hourList.add(5);
-        hourList.add(2);
-        hourList.add(9);
-        //---------------
+        graphs.clear();
 
         int allHoursTogether = 0;
-        for(int hour: hourList){
-            allHoursTogether += hour;
+        for (String hour : jsonReader.budget_hours) {
+            allHoursTogether += Integer.parseInt(hour);
         }
         allHours.setText(allHoursTogether + "h");
 
         //SETS budget
 
-        setBudget(view, 1, 1000000, 25000);
+        setBudget(view, 1, jsonReader.budget_maxBudget, 25000);
 
 
         RecyclerView recyclerViewPpl = view.findViewById(R.id.recyclerViewPeople);
         recyclerViewPpl.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerViewPeople adapterPpl = new RecyclerViewPeople(getActivity(), nameList, hourList);
+        RecyclerViewPeople adapterPpl = new RecyclerViewPeople(getActivity(), jsonReader.budget_people, jsonReader.budget_hours);
         recyclerViewPpl.setAdapter(adapterPpl);
         recyclerViewPpl.setNestedScrollingEnabled(false);
 
         //HOW TO; Make a graph and display it
         //---------------
         GraphObject graph1 = new GraphObject();
-        graph1.setTitle("Test Graph");
-        graph1.setBudget(100);
-        graph1.setTime(100);
-        graph1.setCoordinates(new int[][]{{45,50},{80,99}});
+        graph1.setTitle("PV");
+        graph1.setBudget(jsonReader.budget_maxBudget);
+        graph1.setTime(jsonReader.budget_PV_coordinats.get(jsonReader.budget_PV_coordinats.size() - 1)[0]);
+        graph1.setCoordinates(jsonReader.budget_PV_coordinats.toArray(new int[0][]));
 
 
         addGraph(graph1);
         //----------------
 
+        /*
         GraphObject graph2 = new GraphObject();
         graph2.setTitle("Test Graph 2");
         graph2.setBudget(5);
@@ -83,9 +68,10 @@ public class BudgetFragment extends Fragment {
         graph2.setCoordinates(new int[][]{{5,5},{1,3}});
 
 
-        addGraph(graph2);
+        addGraph(graph2);*/
         //----------------
 
+        /*
         GraphObject graph3 = new GraphObject();
         graph3.setTitle("Test Graph 3");
         graph3.setBudget(5);
@@ -93,7 +79,7 @@ public class BudgetFragment extends Fragment {
         graph3.setCoordinates(new int[][]{{5,5},{1,3}});
 
 
-        addGraph(graph3);
+        addGraph(graph3);*/
         //----------------
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);

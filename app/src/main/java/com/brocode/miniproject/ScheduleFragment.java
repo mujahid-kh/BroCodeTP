@@ -11,10 +11,7 @@ import com.archit.calendardaterangepicker.customviews.DateRangeCalendarView;
 
 import org.angmarch.views.NiceSpinner;
 
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class ScheduleFragment extends Fragment {
@@ -31,8 +28,7 @@ public class ScheduleFragment extends Fragment {
 
     void fixSchedule(View view) {
         NiceSpinner niceSpinner = view.findViewById(R.id.nice_spinner);
-        List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
-        niceSpinner.attachDataSource(dataset);
+        niceSpinner.attachDataSource(jsonReader.schedule_list);
 
         DateRangeCalendarView calendarView = view.findViewById(R.id.calendar);
 
