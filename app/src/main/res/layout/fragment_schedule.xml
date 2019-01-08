@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
+            custom:enable_past_date="true"
             custom:disable_date_color="#ABABAB"
             custom:layout_constraintTop_toBottomOf="@+id/nice_spinner"
             custom:range_color="@color/colorDateRange"

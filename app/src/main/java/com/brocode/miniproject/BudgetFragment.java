@@ -31,11 +31,8 @@ public class BudgetFragment extends Fragment {
 
         graphs.clear();
 
-        int allHoursTogether = 0;
-        for (String hour : jsonReader.budget_hours) {
-            allHoursTogether += Integer.parseInt(hour);
-        }
-        allHours.setText(allHoursTogether + "h");
+
+        allHours.setText(jsonReader.totalHours + "h");
 
         //SETS budget
 
@@ -44,7 +41,7 @@ public class BudgetFragment extends Fragment {
 
         RecyclerView recyclerViewPpl = view.findViewById(R.id.recyclerViewPeople);
         recyclerViewPpl.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerViewPeople adapterPpl = new RecyclerViewPeople(getActivity(), jsonReader.budget_people, jsonReader.budget_hours);
+        RecyclerViewPeople adapterPpl = new RecyclerViewPeople(getActivity(), jsonReader.totalPeople);
         recyclerViewPpl.setAdapter(adapterPpl);
         recyclerViewPpl.setNestedScrollingEnabled(false);
 

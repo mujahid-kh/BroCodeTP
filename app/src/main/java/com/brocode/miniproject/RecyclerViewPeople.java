@@ -7,18 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Set;
+
 public class RecyclerViewPeople extends RecyclerView.Adapter<RecyclerViewPeople.ViewHolder> {
 
 
     private LayoutInflater mInflater;
-    private String[] nameList;
-    private String[] hourList;
+    private HashMap<String, Integer> people;
 
     // data is passed into the constructor
-    RecyclerViewPeople(Context context, String[] nameList, String[] hourList) {
+    RecyclerViewPeople(Context context, HashMap<String, Integer> people) {
         this.mInflater = LayoutInflater.from(context);
-        this.nameList = nameList;
-        this.hourList = hourList;
+        this.people = people;
     }
 
     // inflates the row layout from xml when needed
@@ -32,15 +33,16 @@ public class RecyclerViewPeople extends RecyclerView.Adapter<RecyclerViewPeople.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         //holder.mSampleTextView.setText(mSampleText.get(position));
-        holder.name.setText(nameList[position]);
-        holder.hour.setText(hourList[position] + "h");
+        Set peopleList = people.keySet();
+        holder.name.setText((String) peopleList.toArray()[position]);
+        holder.hour.setText(people.get(peopleList.toArray()[position]) + "h");
 
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return nameList.length;
+        return people.size() - 1;
     }
 
 
