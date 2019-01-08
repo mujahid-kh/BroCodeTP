@@ -38,7 +38,30 @@
       ]
     
   },
-  "risk_matrix": {},
+  
+  "risk_matrix": {
+  "array_consequences": [
+      "Loss of life",
+      "Injury",
+      "Loss of Property",
+      "Security Breach",
+      "Damage to Nature"
+      ],
+    
+  "array_likelihood": [
+      "5, 5, 4",
+      "5, 4, 4",
+      "4, 3, 3",
+      "4, 3, 2",
+      "2, 1, 1"
+      ]
+  },
+  
+  "array_alternative_likelihood": [
+    "5, 5, 4, 5, 4, 4, 4, 3, 3, 4, 3, 2, 2, 1, 1"
+    ],
+  
+  
   "schedule": {},
   "tasks": [
     "Elicitation",
