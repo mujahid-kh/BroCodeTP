@@ -1,0 +1,125 @@
+{
+  "budget": {
+    "array_persons": [
+      "Mike",
+      "Emilio",
+      "Mujahid",
+      "Lema",
+      "Ali"
+    ],
+    
+    "budget_amount": 79600,
+    "hourly_cost": 50,
+    
+    "budget_PV_coordinates": [
+      [0,0],
+      [2,6368],
+      [4,15522],
+      [6,27860],
+      [8,39800],
+      [10,51740],
+      [12,63680],
+      [14,72436],
+      [16,79600]
+      ],
+      
+    "budget_AC_coordinates": [
+      [0,0],
+      [2,7000],
+      [4,18500],
+      [6,33000]
+      ],
+      
+    "budget_EV_coordinates": [
+      [0,0],
+      [2,3980],
+      [4,11940],
+      [6,22288]
+      ]
+    
+  },
+  
+  "risk_matrix": {
+  "array_consequences": [
+      "Loss of life",
+      "Injury",
+      "Loss of Property",
+      "Security Breach",
+      "Damage to Nature"
+      ],
+    
+  "array_likelihood": [
+      "5, 5, 4",
+      "5, 4, 4",
+      "4, 3, 3",
+      "4, 3, 2",
+      "2, 1, 1"
+      ]
+  },
+  
+  "array_alternative_likelihood": [
+    "5, 5, 4, 5, 4, 4, 4, 3, 3, 4, 3, 2, 2, 1, 1"
+    ],
+  
+  
+  "schedule": {},
+  "tasks": [
+    "Elicitation",
+    "UX & Design Prototyping",
+    "Development: Log in",
+    "Testing: Log in",
+    "Development: Work assignment",
+    "Testing: Work assignment",
+    "Development: Resources",
+    "Testing: Resources",
+    "Development: Messaging",
+    "Testing: Messaging",
+    "Development: Incident objectives",
+    "Testing: Incident objectives",
+    "Security Testing",
+    "Final Testing"
+  ],
+  
+  "array_task_dates": [
+    ["2018-10-01", "2018-10-12"],
+    ["2018-10-15", "2018-10-19"],
+    ["2018-10-22", "2018-11-02"],
+    ["2018-11-05", "2018-11-07"],
+    ["2018-11-08", "2018-11-19"],
+    ["2018-11-20", "2018-11-21"],
+    ["2018-11-22", "2018-12-03"],
+    ["2018-12-04", "2018-12-05"],
+    ["2018-12-06", "2018-12-18"],
+    ["2018-12-19", "2018-12-21"],
+    ["2018-12-24", "2018-12-27"],
+    ["2018-12-28", "2018-12-28"],
+    ["2018-12-31", "2019-01-11"],
+    ["2019-01-14", "2019-01-18"]
+  ],
+  
+  
+  "tasks_contributors": {
+    "elicitation_contributors": {
+      "Mujahid": [0, 70, 0, 0],
+      "Lema": [0, 70, 0, 0]
+    },
+    "ux_design_prototyping_contributors": {
+      "Emilio": [0, 50, 0, 0],
+      "Ali": [0, 50, 0, 0]
+    },
+    "development_login_contributors": {
+      "Mujahid": [0, 0, 40, 55],
+      "Ali": [0, 0, 50, 60],
+      "Mike": [0, 0, 40, 50]
+    },
+    "testing_login_contributors": {
+      "Emilio": [0, 0, 0, 30],
+      "Lema": [0, 0, 0, 34]
+    },
+    "development_work_assignments_contributors": {
+      "Mujahid": [0, 0, 0, 20],
+      "Emilio": [0, 0, 0, 21],
+      "Lema": [0, 0, 0, 20]
+    }
+  }
+}
