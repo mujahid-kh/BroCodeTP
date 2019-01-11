@@ -27,6 +27,8 @@ public class jsonReader {
 
 
     public static List<int[]> budget_PV_coordinats;
+    public static List<int[]> budget_AC_coordinats;
+    public static List<int[]> budget_EV_coordinats;
 
     public static List<String> schedule_list;
     public static List<String[]> schedule_dates;
@@ -76,12 +78,25 @@ public class jsonReader {
             budget_maxBudget = budget.getInt("budget_amount");
 
 
-            JSONArray arrayCoordinates = budget.getJSONArray("budget_PV_coordinates");
-
+            JSONArray arrayCoordinates1 = budget.getJSONArray("budget_PV_coordinates");
             budget_PV_coordinats = new ArrayList<>();
-            for (int i = 0; i < arrayCoordinates.length(); i++) {
-                int[] coords = toIntArray(arrayCoordinates.getJSONArray(i));
+            for (int i = 0; i < arrayCoordinates1.length(); i++) {
+                int[] coords = toIntArray(arrayCoordinates1.getJSONArray(i));
                 budget_PV_coordinats.add(new int[]{coords[0], coords[1]});
+            }
+
+            JSONArray arrayCoordinates2 = budget.getJSONArray("budget_AC_coordinates");
+            budget_AC_coordinats = new ArrayList<>();
+            for (int i = 0; i < arrayCoordinates2.length(); i++) {
+                int[] coords = toIntArray(arrayCoordinates2.getJSONArray(i));
+                budget_AC_coordinats.add(new int[]{coords[0], coords[1]});
+            }
+
+            JSONArray arrayCoordinates3 = budget.getJSONArray("budget_EV_coordinates");
+            budget_EV_coordinats = new ArrayList<>();
+            for (int i = 0; i < arrayCoordinates3.length(); i++) {
+                int[] coords = toIntArray(arrayCoordinates3.getJSONArray(i));
+                budget_EV_coordinats.add(new int[]{coords[0], coords[1]});
             }
 
 

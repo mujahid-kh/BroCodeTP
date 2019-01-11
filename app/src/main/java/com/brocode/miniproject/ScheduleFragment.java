@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.archit.calendardaterangepicker.customviews.DateRangeCalendarView;
 
@@ -31,14 +32,14 @@ public class ScheduleFragment extends Fragment {
         return view;
     }
 
-    void fixSchedule(View view) {
-        final NiceSpinner niceSpinner = view.findViewById(R.id.nice_spinner);
+    void fixSchedule(final View parentView) {
+        final NiceSpinner niceSpinner = parentView.findViewById(R.id.nice_spinner);
         niceSpinner.attachDataSource(jsonReader.schedule_list);
-        updateSpinner(niceSpinner, view);
+        updateSpinner(niceSpinner, parentView);
         niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                updateSpinner(niceSpinner, view);
+                updateSpinner(niceSpinner, parentView);
             }
 
             @Override
@@ -53,8 +54,6 @@ public class ScheduleFragment extends Fragment {
 
     void updateSpinner(NiceSpinner niceSpinner, View view) {
         String[] selectedDate = jsonReader.schedule_dates.get(niceSpinner.getSelectedIndex());
-        Log.d("APP", selectedDate[0]);
-        Log.d("APP", selectedDate[1]);
 
         String[] startDates = selectedDate[0].split("-");
         String[] endDates = selectedDate[1].split("-");
@@ -62,12 +61,14 @@ public class ScheduleFragment extends Fragment {
 
         DateRangeCalendarView calendarView = view.findViewById(R.id.calendar);
 
+
         Calendar now = Calendar.getInstance();
         now.set(Calendar.YEAR, Integer.parseInt(startDates[0]));
         now.set(Calendar.MONTH, Integer.parseInt(startDates[1]) - 1);
         Calendar later = Calendar.getInstance();
         later.set(Calendar.YEAR, Integer.parseInt(endDates[0]));
         later.set(Calendar.MONTH, Integer.parseInt(endDates[1]));
+
 
         calendarView.setVisibleMonthRange(now, later);
 
@@ -96,5 +97,8 @@ public class ScheduleFragment extends Fragment {
         calendarView.setCurrentMonth(current);
 
         calendarView.setEditable(false);
+
+        TextView textView = (TextView) view.findViewById(R.id.textView);
+        textView.setText(selectedDate[0] + " - " + selectedDate[1]);
     }
 }

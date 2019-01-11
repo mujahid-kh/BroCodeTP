@@ -57,26 +57,24 @@ public class BudgetFragment extends Fragment {
         addGraph(graph1);
         //----------------
 
-        /*
         GraphObject graph2 = new GraphObject();
-        graph2.setTitle("Test Graph 2");
-        graph2.setBudget(5);
-        graph2.setTime(8);
-        graph2.setCoordinates(new int[][]{{5,5},{1,3}});
+        graph2.setTitle("AC");
+        graph2.setBudget(jsonReader.budget_maxBudget);
+        graph2.setTime(jsonReader.budget_AC_coordinats.get(jsonReader.budget_AC_coordinats.size() - 1)[0]);
+        graph2.setCoordinates(jsonReader.budget_AC_coordinats.toArray(new int[0][]));
 
 
-        addGraph(graph2);*/
+        addGraph(graph2);
         //----------------
 
-        /*
         GraphObject graph3 = new GraphObject();
-        graph3.setTitle("Test Graph 3");
-        graph3.setBudget(5);
-        graph3.setTime(8);
-        graph3.setCoordinates(new int[][]{{5,5},{1,3}});
+        graph3.setTitle("EV");
+        graph3.setBudget(jsonReader.budget_maxBudget);
+        graph3.setTime(jsonReader.budget_EV_coordinats.get(jsonReader.budget_EV_coordinats.size() - 1)[0]);
+        graph3.setCoordinates(jsonReader.budget_EV_coordinats.toArray(new int[0][]));
 
 
-        addGraph(graph3);*/
+        addGraph(graph3);
         //----------------
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
