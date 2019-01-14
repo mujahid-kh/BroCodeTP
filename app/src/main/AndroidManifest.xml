@@ -28,4 +28,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
+    <meta-data
+        android:name="android.app.searchable"
+        android:resource="@xml/searchable" />
+
 </manifest>
