@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.warkiz.widget.IndicatorSeekBar;
+import com.warkiz.widget.OnSeekChangeListener;
+import com.warkiz.widget.SeekParams;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,37 +90,38 @@ public class BudgetFragment extends Fragment {
         return view;
     }
 
-    private void setBudget(View view, int min, int max, int progress) {
+    private void setBudget(View view, int min, int max, final int progress) {
         final TextView minTextView = view.findViewById(R.id.progressBarStartText);
         TextView maxTextView = view.findViewById(R.id.progressBarEndText);
-        SeekBar progressBar = view.findViewById(R.id.progressBar);
+        final IndicatorSeekBar slider = view.findViewById(R.id.slider);
+        //minTextView.setText(progress + " kr");
+
 
         minTextView.setText(min + " kr");
         maxTextView.setText(max + " kr");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            progressBar.setMin(min);
-            progressBar.setMax(max);
-            progressBar.setProgress(progress, true);
-        } else {
-            progressBar.setMax(max - min);
-            progressBar.setProgress(progress - min);
-        }
-        progressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+        slider.setMin(min);
+        slider.setMax(max);
+        slider.setProgress(progress);
+        //slider.setEnabled(false);
+        slider.setOnSeekChangeListener(new OnSeekChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minTextView.setText(progress + " kr");
+            public void onSeeking(SeekParams seekParams) {
+                slider.setProgress(progress);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
+            public void onStartTrackingTouch(IndicatorSeekBar seekBar) {
+                slider.setProgress(progress);
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
+            public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
+                slider.setProgress(progress);
             }
         });
+
+
     }
 
 
